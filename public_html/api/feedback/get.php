@@ -18,12 +18,17 @@ if ($feedbacks !== false) {
 
         $r_array = $feedback->getData();
 
-//        $user = $models['user']->getById($r_array['user_id']);
-//        $r_array['name'] = $user->getName();
+        $user = $models['user']->getById($r_array['user_id']);
+        $r_array['name'] = $user->getName();
         $r_array['timestamp'] = date('Y/m/d H:i:s', $r_array['timestamp']);
 
+        $sorted = [
+            'name' => $r_array['name'],
+            'feedback' => $r_array['feedback'],
+            'timestamp' => $r_array['timestamp'],
+        ];
 
-        $response->addData($r_array);
+        $response->addData($sorted);
     }
 } else {
     $response->addError('Could not pull data from database!');

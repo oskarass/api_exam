@@ -72,10 +72,17 @@ class Feedback {
         return $this->data['user_id'] ?? null;
     }
 
+    public function setTimestamp(int $timestamp) {
+        $this->data['timestamp'] = $timestamp;
+    }
+
     /**
-     * Sets name
-     * @param string $name
+     * @return mixed
      */
+    public function getTimestamp() {
+        return $this->data['timestamp'] ?? null;
+    }
+
     public function setFeedback(string $feedback) {
         $this->data['feedback'] = $feedback;
     }
@@ -86,21 +93,6 @@ class Feedback {
      */
     public function getFeedback() {
         return $this->data['feedback'] ?? null;
-    }
-
-    /**
-     * Sets data surname
-     * @param string $surname
-     */
-    public function setTimestamp(int $timestamp) {
-        $this->data['timestamp'] = $timestamp;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTimestamp() {
-        return $this->data['timestamp'] ?? null;
     }
 
 }

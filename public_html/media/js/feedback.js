@@ -2,7 +2,7 @@
 
 const endpoints = {
     get: 'api/feedback/get.php',
-    create: 'api/feedback/create.php'
+    create: 'api/feedback/create.php',
 };
 
 /**
@@ -18,23 +18,23 @@ function api(url, formData, success, fail) {
         method: 'POST',
         body: formData
     }).then(response => response.json())
-            .then(obj => {
-                if (obj.status === 'success') {
-                    success(obj.data);
-                } else {
-                    fail(obj.errors);
-                }
-            })
-            .catch(e => {
-                console.log(e);
-                fail(['Could not connect to API!']);
-            });
+        .then(obj => {
+            if (obj.status === 'success') {
+                success(obj.data);
+            } else {
+                fail(obj.errors);
+            }
+        })
+        .catch(e => {
+            console.log(e);
+            fail(['Could not connect to API!']);
+        });
 }
 
 /**
  * Form array
  * Contains all form-related functionality
- * 
+ *
  * Object forms
  */
 const forms = {
@@ -44,7 +44,9 @@ const forms = {
     create: {
         init: function () {
             console.log('Initializing create form...');
-            this.getElement().addEventListener('submit', this.onSubmitListener);
+            if(this.getElement()) {
+                this.getElement().addEventListener('submit', this.onSubmitListener);
+            }
         },
         getElement: function () {
             return document.getElementById("create-form");
@@ -67,6 +69,8 @@ const forms = {
         }
     },
     /**
+     * Update Form
+     */
     /**
      * Common/Universal Form UI Functions
      */
@@ -79,9 +83,9 @@ const forms = {
         /**
          * Fills form fields with data
          * Each data index corelates with input name attribute
-         * 
+         *
          * @param {Element} form
-         * @param {Object} data 
+         * @param {Object} data
          */
         fill: function (form, data) {
             form.setAttribute('data-id', data.id);
@@ -96,7 +100,7 @@ const forms = {
             });
         },
         clear: function (form) {
-            var fields = form.querySelectorAll('[name]')
+            var fields = form.querySelectorAll('[name]');
             fields.forEach(field => {
                 field.value = '';
             });
@@ -104,7 +108,7 @@ const forms = {
         flash: {
             class: function (element, class_name) {
                 const prev = element.className;
-                
+
                 element.className += class_name;
                 setTimeout(function () {
                     element.className = prev;
@@ -118,7 +122,7 @@ const forms = {
             /**
              * Shows errors in form
              * Each error index correlates with input name attribute
-             * 
+             *
              * @param {Element} form
              * @param {Object} errors
              */
@@ -142,7 +146,7 @@ const forms = {
                 const errors = form.querySelectorAll('.field-error');
                 if (errors) {
                     errors.forEach(node => {
-                        node.remove();                 
+                        node.remove();
                     });
                 }
             }
@@ -190,7 +194,7 @@ const table = {
     row: {
         /**
          * Builds row element from data
-         * 
+         *
          * @param {Object} data
          * @returns {Element}
          */
@@ -211,13 +215,20 @@ const table = {
         },
         /**
          * Appends row to table from data
-         * 
+         *
          * @param {Object} data
          */
         append: function (data) {
             table.getElement().append(this.build(data));
         },
-    },
+        /**
+         * Updates existing row in table from data
+         * Row is selected via "id" index in data
+         *
+         * @param {Object} data
+         */
+
+        }
 };
 
 /**

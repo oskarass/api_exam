@@ -43,9 +43,16 @@ function form_success($filtered_input, $form) {
     $user = $models['user']->getById($r_array['user_id']);
     $r_array['name'] = $user->getName();
     $r_array['timestamp'] = date('Y/m/d H:i:s', $r_array['timestamp']);
-    $response->addData($r_array);
 
-    $response->setData($r_array);
+    $sorted = [
+        'name' => $r_array['name'],
+        'feedback' => $r_array['feedback'],
+        'timestamp' => $r_array['timestamp'],
+    ];
+
+    $response->addData($sorted);
+
+    $response->setData($sorted);
 
     $response->print();
 }

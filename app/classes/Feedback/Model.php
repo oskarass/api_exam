@@ -18,12 +18,12 @@ class Model {
      * @param Feedback $person
      * @return bool
      */
-    public function insert(Feedback $feedback) {
-        $row_id = App::$db->insertRow($this->table_name, $feedback->getData());
+    public function insert(Feedback $person) {
+        $row_id = App::$db->insertRow($this->table_name, $person->getData());
 
-        $feedback->setId($row_id);
+        $person->setId($row_id);
 
-        return $feedback;
+        return $person;
     }
 
     /**
@@ -31,22 +31,22 @@ class Model {
      * @return array
      */
     public function get($conditions = []) {
-        $feedbacks = [];
+        $reviews = [];
         $rows = App::$db->getRowsWhere($this->table_name, $conditions);
         foreach ($rows as $row_id => $row_data) {
             $row_data['id'] = $row_id;
-            $feedbacks[] = new Feedback($row_data);
+            $reviews[] = new Feedback($row_data);
         }
         
-        return $feedbacks;
+        return $reviews;
     }
 
     /**
      * @param Feedback $person
      * @return bool
      */
-    public function update(Feedback $feedback) {
-        return App::$db->updateRow($this->table_name, $feedback->getId(), $feedback->getData());
+    public function update(Feedback $person) {
+        return App::$db->updateRow($this->table_name, $person->getId(), $person->getData());
     }
 
     /**
@@ -54,8 +54,8 @@ class Model {
      * @param Feedback $person
      * @return bool
      */
-    public function delete(Feedback $feedback) {
-        return App::$db->deleteRow($this->table_name, $feedback->getId());
+    public function delete(Feedback $person) {
+        return App::$db->deleteRow($this->table_name, $person->getId());
     }
 
     public function __destruct() {

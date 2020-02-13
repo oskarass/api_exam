@@ -3,7 +3,6 @@
 require '../bootloader.php';
 
 use App\App;
-
 $createForm = new \App\Feedback\Views\CreateForm();
 $navigation = new \App\Views\Navigation();
 $footer = new \App\Views\Footer();
@@ -33,9 +32,9 @@ $footer = new \App\Views\Footer();
                 <table>
                     <thead>
                     <tr>
+                        <th>Vardas</th>
                         <th>Komentaras</th>
                         <th>Data</th>
-                        <th>Vardas</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -44,14 +43,13 @@ $footer = new \App\Views\Footer();
                 </table>
             </div>
         </div>
-        <?php
-
-        if (App::$session->userLoggedIn()): ?>
+        <?php if (App::$session->userLoggedIn()) : ?>
         <div class="block">
             <?php print $createForm->render(); ?>
         </div>
         <?php else: ?>
             <p>Norite parašyti komentarą? <a href="register.php">Užsiregistruokite</a></p>
+
         <?php endif; ?>
     </section>
 </main>
