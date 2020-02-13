@@ -29,7 +29,7 @@ $footer = new \App\Views\Footer();
         <div class="block">
             <h1>Atsiliepimai:</h1>
 
-            <div id="person-table">
+            <div id="feedback-table">
                 <table>
                     <thead>
                     <tr>
