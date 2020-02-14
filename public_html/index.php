@@ -26,18 +26,18 @@ $footer = new \App\Views\Footer();
                 <div class="services">
                     <div class="service-card">
                         <img class="card-img" src="/media/img/service1.jpeg">
-                        <h4 class="service-type">PASLAUGA</h4>
-                        <p class="service-text">Paslaugos aprasymas</p>
+                        <h5 class="service-type">KELEIVIŲ PERVEŽIMAS</h5>
+                        <p class="service-text">Keleivių pervežimas lengvaisiais automobiliais visoje Lietuvoje.</p>
                     </div>
                     <div class="service-card">
                         <img class="card-img" src="/media/img/service2.jpeg">
-                        <h4 class="service-type">PASLAUGA</h4>
-                        <p class="service-text">Paslaugos aprasymas</p>
+                        <h5 class="service-type">KROVINIŲ PERVEŽIMAS</h5>
+                        <p class="service-text">Krovinių pervežimas sunkiuoju transportu visoje Lietuvoje.</p>
                     </div>
                     <div class="service-card">
                         <img class="card-img" src="/media/img/service3.jpeg">
-                        <h4 class="service-type">PASLAUGA</h4>
-                        <p class="service-text">Paslaugos aprasymas</p>
+                        <h5 class="service-type">PASITIKIMAS ORO UOSTE</h5>
+                        <p class="service-text">Pasitikimas bei pervežimas į/iš oro uostą.</p>
                     </div>
                 </div>
             </section>
